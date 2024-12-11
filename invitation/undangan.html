@@ -249,8 +249,8 @@
                   <textarea id="ucapan" class="form-control" rows="10" placeholder="Masukkan ucapan"
                     required></textarea>
                 </div>
-                <button onclick="showThankYouAlert()" type="submit" onclick=""
-                  class="btn btn-lg w-100 tombol-kirim">Kirim</button>
+                <button onclick="showThankYouAlert()">cklil</button>
+                <button onclick="showThankYouAlert()" type="submit" class="btn btn-lg w-100 tombol-kirim">Kirim</button>
               </form>
             </div>
           </div>
@@ -295,32 +295,34 @@
 
   <script>
     function showThankYouAlert() {
-      Swal.fire({
-        title: 'Terima Kasih!',
-        html: '<div class="smiley">😉</div>',
-        customClass: {
-          popup: 'swal2-popup'  // Menambahkan kelas kustom untuk memperbesar kotak alert
-        },
-        willOpen: () => {
-          // Animasi dinamis sebelum alert ditampilkan
-          const smiley = document.querySelector('.smiley');
-          smiley.style.transform = 'scale(1.2)';
-        },
-        didOpen: () => {
-          // Animasi dinamis saat alert terbuka
-          const smiley = document.querySelector('.smiley');
-          smiley.style.transition = 'transform 1s ease';
-          smiley.style.transform = 'scale(1)';
+        Swal.fire({
+          title: 'Terima Kasih!',
+          html: '<div class="smiley">😉</div>',
+          customClass: {
+            popup: 'swal2-popup'  // Menambahkan kelas kustom untuk memperbesar kotak alert
+          },
+          showConfirmButton: false, // Menyembunyikan tombol "OK"
+          willOpen: () => {
+            // Animasi dinamis sebelum alert ditampilkan
+            const smiley = document.querySelector('.smiley');
+            smiley.style.transform = 'scale(1.2)';
+          },
+          didOpen: () => {
+            // Animasi dinamis saat alert terbuka
+            const smiley = document.querySelector('.smiley');
+            smiley.style.transition = 'transform 1s ease';
+            smiley.style.transform = 'scale(1)';
 
-          // Menunggu durasi animasi selesai, kemudian menutup alert
-          setTimeout(() => {
-            Swal.close(); // Menutup alert setelah animasi selesai
-          }, 1000); // Durasi animasi 1 detik
-        }
-      });
-    }
+            // Menunggu durasi animasi selesai, kemudian menutup alert
+            setTimeout(() => {
+              Swal.close(); // Menutup alert setelah animasi selesai
+            }, 1000); // Durasi animasi 1 detik
+          }
+        });
+      }
+
   </script>
-  </script>
+
 
   <!-- bootstrap js -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

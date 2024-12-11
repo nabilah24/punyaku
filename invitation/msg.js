@@ -49,6 +49,9 @@ document.getElementById('ucapanForm').addEventListener('submit', function (e) {
         console.log(data.message); // Menampilkan pesan dari backend
         renderUcapan(); // Menampilkan ulang daftar ucapan setelah data dikirim
         e.target.reset(); // Mengatur ulang form
+
+        // Memanggil window.location.reload() untuk reload halaman
+        window.location.reload(); // Refresh halaman
       })
       .catch((err) => console.error('Gagal mengirim data:', err));
   }
