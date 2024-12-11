@@ -1,6 +1,6 @@
 // Fungsi untuk render daftar ucapan
 function renderUcapan() {
-  fetch('https://punyaku.onrender.com')
+  fetch('https://punyaku.onrender.com/ucapan') // Pastikan menggunakan '/ucapan'
     .then((res) => res.json())
     .then((data) => {
       const daftarUcapan = document.getElementById('daftarUcapan');
@@ -39,7 +39,7 @@ document.getElementById('ucapanForm').addEventListener('submit', function (e) {
   // Mengecek jika nama dan isi sudah diisi
   if (nama && isi) {
     // Mengirim data ucapan ke backend
-    fetch('https://punyaku.onrender.com', {
+    fetch('https://punyaku.onrender.com/ucapan', { // Pastikan menggunakan '/ucapan'
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nama, isi }),

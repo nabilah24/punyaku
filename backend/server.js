@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 const filePath = './data/ucapanList.json';
 
 // Endpoint untuk mendapatkan daftar ucapan
-app.get('/', (req, res) => {
+app.get('/ucapan', (req, res) => {
   fs.readFile(filePath, 'utf-8', (err, data) => {
     if (err) {
       return res.status(500).json({ message: 'Gagal membaca file' });
@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 // Endpoint untuk menambahkan ucapan
-app.post('/', (req, res) => {
+app.post('/ucapan', (req, res) => {
   const { nama, isi } = req.body;
   if (!nama || !isi) {
     return res.status(400).json({ message: 'Nama dan ucapan diperlukan' });
