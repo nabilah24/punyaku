@@ -1,20 +1,27 @@
 // Fungsi untuk render daftar ucapan
 function renderUcapan() {
-  fetch('/api/ucapan')
+  fetch('http://127.0.0.1:3000/ucapan')
     .then((res) => res.json())
     .then((data) => {
       const daftarUcapan = document.getElementById('daftarUcapan');
-      daftarUcapan.innerHTML = '';
+      daftarUcapan.innerHTML = ''; // Kosongkan daftar ucapan sebelumnya
+
       data.forEach((ucapan) => {
+        // Membuat elemen div baru untuk setiap ucapan
         const div = document.createElement('div');
         div.classList.add('col-12', 'col-md-6', 'g-5');
-        div.innerHTML = `<div class="card bg-white card-left">
+
+        // Menambahkan elemen card untuk menampilkan nama dan isi ucapan
+        div.innerHTML = `
+          <div class="card bg-white card-left">
             <div class="card-body">
               <h1 class="card-title">${ucapan.nama}</h1>
               <h4 class="card-text">${ucapan.isi}</h4>
- 
             </div>
-          </div>`;
+          </div>
+        `;
+
+        // Menambahkan elemen div ke dalam daftar ucapan
         daftarUcapan.appendChild(div);
       });
     })
@@ -23,22 +30,25 @@ function renderUcapan() {
 
 // Event listener untuk form submit
 document.getElementById('ucapanForm').addEventListener('submit', function (e) {
-  e.preventDefault();
+  e.preventDefault(); // Mencegah pengiriman form secara default
 
+  // Mengambil nilai nama dan isi ucapan
   const nama = document.getElementById('nama').value.trim();
   const isi = document.getElementById('ucapan').value.trim();
 
+  // Mengecek jika nama dan isi sudah diisi
   if (nama && isi) {
-    fetch('/api/ucapan', {
+    // Mengirim data ucapan ke backend
+    fetch('http://127.0.0.1:3000/ucapan', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nama, isi }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.message);
-        renderUcapan();
-        e.target.reset();
+        console.log(data.message); // Menampilkan pesan dari backend
+        renderUcapan(); // Menampilkan ulang daftar ucapan setelah data dikirim
+        e.target.reset(); // Mengatur ulang form
       })
       .catch((err) => console.error('Gagal mengirim data:', err));
   }
