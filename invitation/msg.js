@@ -6,10 +6,10 @@ function renderUcapan() {
       const daftarUcapan = document.getElementById('daftarUcapan');
       daftarUcapan.innerHTML = ''; // Kosongkan daftar ucapan sebelumnya
 
-      data.forEach((ucapan, index) => {
+      data.forEach((ucapan) => {
         // Membuat elemen div baru untuk setiap ucapan
         const div = document.createElement('div');
-        div.classList.add('col-12', 'col-md-6', 'g-5');
+        div.classList.add('col-lg-6', 'col-md-6', 'g-5');
 
         // Menambahkan elemen card untuk menampilkan nama dan isi ucapan
         div.innerHTML = `
@@ -17,7 +17,6 @@ function renderUcapan() {
             <div class="card-body">
               <h1 class="card-title">${ucapan.nama}</h1>
               <h4 class="card-text">${ucapan.isi}</h4>
-              <button class="btn btn-danger" onclick="hapusUcapan(${index})">Hapus</button> <!-- Tombol hapus -->
             </div>
           </div>
         `;
@@ -27,19 +26,6 @@ function renderUcapan() {
       });
     })
     .catch((err) => console.error('Gagal memuat data:', err));
-}
-
-// Fungsi untuk menghapus ucapan
-function hapusUcapan(index) {
-  fetch(`https://punyaku.onrender.com/ucapan/${index}`, {
-    method: 'DELETE',
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data.message); // Menampilkan pesan dari backend
-      renderUcapan(); // Menampilkan ulang daftar ucapan setelah ucapan dihapus
-    })
-    .catch((err) => console.error('Gagal menghapus data:', err));
 }
 
 // Event listener untuk form submit

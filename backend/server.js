@@ -41,26 +41,6 @@ app.post('/ucapan', (req, res) => {
   });
 });
 
-// Endpoint untuk menghapus ucapan
-app.delete('/ucapan/:id', (req, res) => {
-  const { id } = req.params;
-
-  fs.readFile(filePath, 'utf-8', (err, data) => {
-    if (err) return res.status(500).json({ message: 'Gagal membaca file' });
-
-    let ucapanList = JSON.parse(data || '[]');
-    // Menemukan ucapan yang akan dihapus
-    ucapanList = ucapanList.filter((ucapan, index) => index !== parseInt(id));
-
-    fs.writeFile(filePath, JSON.stringify(ucapanList, null, 2), (err) => {
-      if (err) return res.status(500).json({ message: 'Gagal menghapus data' });
-
-      res.status(200).json({ message: 'Ucapan berhasil dihapus' });
-    });
-  });
-});
-
-
 // Menjalankan server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
