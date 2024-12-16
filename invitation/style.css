@@ -102,7 +102,7 @@ body {
   background: linear-gradient(to bottom,
         rgba(0, 0, 0, 0.8) 0%,
         /* Hitam dengan transparansi tinggi di atas */
-        rgba(0, 0, 0, 0.5) 40%,
+        rgba(0, 0, 0, 0.5) 30%,
         /* Hitam dengan transparansi sedang di tengah */
         #ffffff 100%
         /* Putih solid di bawah */
@@ -579,7 +579,7 @@ body {
 
   .akad-card .card-body h5,
   .resepsi-card .card-body h5 {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
   .akad-card,
@@ -1112,7 +1112,7 @@ body {
   border: 5px solid #a9a9a9;
   color: #a9a9a9;
   border-radius: 50%;
-  padding: 1px 5px;
+  padding: 2px 5px;
   font-size: 20px;
   cursor: pointer;
   z-index: 1000;
