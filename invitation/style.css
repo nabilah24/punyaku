@@ -20,6 +20,24 @@ html {
   height: 100%;
 }
 
+@media (min-width: 1440px) {
+  html {
+    zoom: 1.5;
+  }
+}
+
+@media (min-width: 2560px) {
+  html {
+    zoom: 1.7;
+  }
+}
+
+@media (min-width: 3860px) {
+  html {
+    zoom: 2.5;
+  }
+}
+
 body {
   height: 100%;
   display: flex;
@@ -82,14 +100,15 @@ body {
 
 .hero {
   background: linear-gradient(to bottom,
-      #ffffff88 0%,
-      /* Transparan lebih tipis */
-      #ffffff88 50%,
-      /* Warna transparan hingga 90% */
-      #ffffff 100%
-      /* Putih solid di bagian bawah */
-    ),
-    url('./assets/images/foto-bg.jpg') center center no-repeat;
+        rgba(0, 0, 0, 0.8) 0%,
+        /* Hitam dengan transparansi tinggi di atas */
+        rgba(0, 0, 0, 0.5) 40%,
+        /* Hitam dengan transparansi sedang di tengah */
+        #ffffff 100%
+        /* Putih solid di bawah */
+      ),
+      url('./assets/images/foto-back.jpg') center center no-repeat;
+    background-size: cover;
   background-size: cover;
   min-height: 100vh;
   display: flex;
@@ -110,47 +129,19 @@ body {
   max-width: 200px;
 }
 
-.logo-invit {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 1rem;
-  /* Memberikan jarak kecil dari tepi */
-}
-
-.logo-invit img {
-  width: 20vw;
-  /* Ukuran logo mengikuti 20% lebar viewport */
-  max-width: 200px;
-  /* Batas maksimum ukuran logo */
-  min-width: 100px;
-  /* Batas minimum agar logo tidak terlalu kecil */
-}
-
-@media (max-width: 767px) {
-  .logo-invit img {
-    width: 30vw;
-    /* Ukuran lebih kecil pada layar kecil */
-    max-width: 150px;
-    /* Batas maksimum lebih kecil */
-    min-width: 80px;
-    /* Batas minimum lebih kecil */
-  }
-}
-
 .hero-item {
   margin-top: 25%;
 }
 
 @media (min-width: 768px) {
   .hero-item {
-    margin-top: 25%;
+    margin-top: 35%;
   }
 }
 
 @media (max-width: 767px) {
   .hero-item {
-    margin-top: 75%;
+    margin-top: 90%;
   }
 }
 
@@ -339,23 +330,18 @@ body {
   justify-content: center;
   align-items: center;
   height: fit-content;
-  /* Tinggi sesuai dengan konten .back */
 }
 
 .back {
   background: url('./assets/images/bg-2.png') center center no-repeat;
   background-size: cover;
   width: 90%;
-  min-height: 90vh;
+  height: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* Styling untuk gambar di dalam elemen */
-.pengantin img {
-  max-width: 100%;
-  height: auto;
+  padding: 20px;
+  /* Add padding for better spacing */
 }
 
 .pengantin h1 {
@@ -363,6 +349,7 @@ body {
   font-family: 'Alex Brush', cursive;
   font-weight: 400;
   color: black;
+  max-width: 250px;
 }
 
 .pengantin p {
@@ -377,12 +364,60 @@ body {
   margin-top: -10px;
 }
 
-@media (min-width: 768px) {
+/* Container utama */
+.image-container {
+  position: relative;
+  width: 400px;
+  height: auto;
+  margin: 0;
+  left: -30px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
 
-  /* Tambahan styling untuk layar lebih besar */
-  .pengantin img {
-    margin-bottom: 0;
-    max-height: 300px;
+/* Background overlay dengan gradasi */
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 50%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, #4d4d4d, #a9a9a9);
+  z-index: 0;
+}
+
+.overlay-image {
+  position: relative;
+  z-index: 10;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  left: 20px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .pengantin h1 {
+    font-size: 2rem;
+    /* Adjust font size for smaller screens */
+  }
+
+  .pengantin p {
+    font-size: 1.2rem;
+    /* Adjust paragraph size for smaller screens */
+  }
+
+  .back .row {
+    display: block;
+    /* Stacking content vertically on smaller screens */
+  }
+
+  .back .col-12 {
+    margin-bottom: 20px;
+    /* Add spacing between columns */
   }
 }
 
@@ -393,7 +428,7 @@ body {
   background-size: cover;
   /* Gambar background memenuhi seluruh elemen */
   width: 100%;
-  min-height: 110vh;
+  min-height: 75vh;
   /* Mencakup tinggi layar penuh */
   display: flex;
   flex-direction: column;
@@ -593,7 +628,7 @@ body {
   background-size: cover;
   /* Gambar latar memenuhi container */
   width: 90%;
-  min-height: 90vh;
+  min-height: 60vh;
   /* Tinggi minimum container */
   display: flex;
   justify-content: center;
@@ -717,7 +752,7 @@ body {
 }
 
 .galeri img {
-  box-shadow: 0 4px 8px #bd8c39;
+  box-shadow: 0 4px 8px #000;
   border: none;
   /* Membatasi tinggi maksimal gambar */
   object-fit: cover;
@@ -758,6 +793,82 @@ body {
   /* Agar elemen yang keluar tidak terlihat */
 }
 
+/* Title Styling */
+.acara .title {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #444;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Card Styling */
+.acara .card {
+  background-color: #fff;
+  padding: 2rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  min-height: 180px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.wedding-gift-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.bank-info {
+  text-align: left;
+  width: 100%;
+}
+
+.account-label {
+  font-size: 0.9rem;
+  margin: 5px 0;
+  font-weight: bold;
+  color: #d3d3d3;
+}
+
+.account-number, .account-name {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  margin: 10px 0;
+}
+
+.bank-name {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.bank-logo {
+  width: 80px;
+  margin-bottom: -20px;
+  margin-top: -20px;
+  align-self: flex-end;
+}
+
+.copy-button {
+  background-color: #333;
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.copy-button:hover {
+  background-color: #4d4d4d;
+}
+
 .ucapan {
   background: url('./assets/images/bg-6.png') center center no-repeat;
   background-size: cover;
@@ -769,22 +880,14 @@ body {
 
 .kartu-ucapan {
   border-radius: 15px;
-  box-shadow: 0 4px 8px #bd8c39;
+  box-shadow: 0 4px 8px #000;
   border: none;
-  background-color: #fff;
+  background-color: #474747;
   /* margin-bottom: 20px; */
   max-height: 75vh;
   /* Adjusted for better scrollability */
   overflow-y: auto;
   /* Ensures vertical scrolling */
-}
-
-.card-left {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
-  border: none;
-  background-color: #fff;
-  margin-bottom: 20px;
-  overflow: hidden;
 }
 
 .kartu-ucapan .card-body {
@@ -926,7 +1029,7 @@ body {
 }
 
 .footer {
-  min-height: 25vh;
+  min-height: 18vh;
   width: 100%;
 }
 
@@ -937,4 +1040,67 @@ body {
   color: #3e424e;
   font-family: "Montserrat Alternates",
     sans-serif;
+}
+
+.alert-box {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #ffffff;
+  /* Background putih */
+  color: #000;
+  /* Warna teks hitam */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Shadow */
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 10px;
+  font-family: Arial, sans-serif;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.alert-box.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Style icon "i" */
+.alert-icon {
+  background-color: #007bff;
+  /* Warna biru */
+  color: #ffffff;
+  /* Warna putih */
+  font-weight: bold;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+/* Style teks */
+.alert-text {
+  margin: 0;
+  font-size: 14px;
+}
+
+#play-pause-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: transparent;
+  border: 5px solid #a9a9a9;
+  color: #a9a9a9;
+  border-radius: 50%;
+  padding: 3px 7px;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 1000;
 }
