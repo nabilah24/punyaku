@@ -17,6 +17,7 @@ function renderUcapan() {
             <div class="card-body">
               <h1 class="card-title">${ucapan.nama}</h1>
               <h4 class="card-text">${ucapan.isi}</h4>
+          
             </div>
           </div>
         `;
@@ -28,58 +29,58 @@ function renderUcapan() {
     .catch((err) => console.error('Gagal memuat data:', err));
 }
 
-// Event listener untuk form submit
-document.getElementById('ucapanForm').addEventListener('submit', function (e) {
-  e.preventDefault(); // Mencegah pengiriman form secara default
+// // Event listener untuk form submit
+// document.getElementById('ucapanForm').addEventListener('submit', function (e) {
+//   e.preventDefault(); // Mencegah pengiriman form secara default
 
-  // Mengambil nilai nama dan isi ucapan
-  const nama = document.getElementById('nama').value.trim();
-  const isi = document.getElementById('ucapan').value.trim();
+//   // Mengambil nilai nama dan isi ucapan
+//   const nama = document.getElementById('nama').value.trim();
+//   const isi = document.getElementById('ucapan').value.trim();
 
-  // Mengecek jika nama dan isi sudah diisi
-  if (nama && isi) {
-    // Mengirim data ucapan ke backend
-    fetch('https://punyaku.onrender.com/ucapan', { // Pastikan menggunakan '/ucapan'
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nama, isi }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.message); // Menampilkan pesan dari backend
-        renderUcapan(); // Menampilkan ulang daftar ucapan setelah data dikirim
-        e.target.reset(); // Mengatur ulang form
+//   // Mengecek jika nama dan isi sudah diisi
+//   if (nama && isi) {
+//     // Mengirim data ucapan ke backend
+//     fetch('https://punyaku.onrender.com/ucapan', { // Pastikan menggunakan '/ucapan'
+//       method: 'POST',
+//       headers: { 'Content-Type': 'application/json' },
+//       body: JSON.stringify({ nama, isi }),
+//     })
+//       .then((res) => res.json())
+//       .then((data) => {
+//         console.log(data.message); // Menampilkan pesan dari backend
+//         renderUcapan(); // Menampilkan ulang daftar ucapan setelah data dikirim
+//         e.target.reset(); // Mengatur ulang form
 
-        // Memanggil window.location.reload() untuk reload halaman
-        window.location.reload(); // Refresh halaman
-      })
-      .catch((err) => console.error('Gagal mengirim data:', err));
-  }
-});
+//         // Memanggil window.location.reload() untuk reload halaman
+//         window.location.reload(); // Refresh halaman
+//       })
+//       .catch((err) => console.error('Gagal mengirim data:', err));
+//   }
+// });
 
-// Render ucapan saat halaman dimuat
-document.addEventListener('DOMContentLoaded', renderUcapan);
+// // Render ucapan saat halaman dimuat
+// document.addEventListener('DOMContentLoaded', renderUcapan);
 
-// Tambahkan fungsi di frontend untuk mereset semua ucapan
-function resetUcapan() {
-  if (confirm('Apakah Anda yakin ingin menghapus semua ucapan?')) {
-    fetch('https://punyaku.onrender.com/ucapan', { // Pastikan menggunakan URL endpoint '/ucapan'
-      method: 'DELETE',
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.message); // Menampilkan pesan dari backend
-        renderUcapan(); // Menampilkan ulang daftar ucapan setelah reset
-      })
-      .catch((err) => console.error('Gagal menghapus semua ucapan:', err));
-  }
-}
+// // Tambahkan fungsi di frontend untuk mereset semua ucapan
+// function resetUcapan() {
+//   if (confirm('Apakah Anda yakin ingin menghapus semua ucapan?')) {
+//     fetch('https://punyaku.onrender.com/ucapan', { // Pastikan menggunakan URL endpoint '/ucapan'
+//       method: 'DELETE',
+//     })
+//       .then((res) => res.json())
+//       .then((data) => {
+//         console.log(data.message); // Menampilkan pesan dari backend
+//         renderUcapan(); // Menampilkan ulang daftar ucapan setelah reset
+//       })
+//       .catch((err) => console.error('Gagal menghapus semua ucapan:', err));
+//   }
+// }
 
-// Tambahkan tombol untuk mereset semua ucapan di HTML
-// Contoh: <button id="resetButton" class="btn btn-danger">Reset Semua Ucapan</button>
+// // Tambahkan tombol untuk mereset semua ucapan di HTML
+// // Contoh: <button id="resetButton" class="btn btn-danger">Reset Semua Ucapan</button>
 
-// Event listener untuk tombol reset
-const resetButton = document.getElementById('resetButton');
-if (resetButton) {
-  resetButton.addEventListener('click', resetUcapan);
-}
+// // Event listener untuk tombol reset
+// const resetButton = document.getElementById('resetButton');
+// if (resetButton) {
+//   resetButton.addEventListener('click', resetUcapan);
+// }
