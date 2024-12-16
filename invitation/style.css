@@ -124,9 +124,22 @@ body {
   max-width: 900px;
 }
 
+/* Animasi berputar 360 derajat */
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Terapkan animasi pada logo */
 .logo img {
   width: 50%;
   max-width: 200px;
+  animation: rotate360 1s linear forwards;
 }
 
 .hero-item {
@@ -1099,7 +1112,7 @@ body {
   border: 5px solid #a9a9a9;
   color: #a9a9a9;
   border-radius: 50%;
-  padding: 3px 7px;
+  padding: 1px 5px;
   font-size: 20px;
   cursor: pointer;
   z-index: 1000;

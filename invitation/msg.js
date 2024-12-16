@@ -9,7 +9,7 @@ function renderUcapan() {
       data.forEach((ucapan) => {
         // Membuat elemen div baru untuk setiap ucapan
         const div = document.createElement('div');
-        div.classList.add('col-lg-6', 'col-md-6', 'g-5');
+        div.classList.add('col-lg-6', 'col-md-6', 'g-5', 'wow', 'fadeInUp');
 
         // Menambahkan elemen card untuk menampilkan nama dan isi ucapan
         div.innerHTML = `
