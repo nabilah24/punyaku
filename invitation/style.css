@@ -891,22 +891,6 @@ body {
   height: fit-content;
 }
 
-.kartu-ucapan {
-  border-radius: 15px;
-  box-shadow: 0 4px 8px #000;
-  border: none;
-  background-color: #474747;
-  /* margin-bottom: 20px; */
-  max-height: 75vh;
-  /* Adjusted for better scrollability */
-  overflow-y: auto;
-  /* Ensures vertical scrolling */
-}
-
-.kartu-ucapan .card-body {
-  padding: 10px;
-}
-
 .kartu-ucapan h1 {
   font-size: 1.8rem;
   font-weight: 900;
