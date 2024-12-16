@@ -59,3 +59,27 @@ document.getElementById('ucapanForm').addEventListener('submit', function (e) {
 
 // Render ucapan saat halaman dimuat
 document.addEventListener('DOMContentLoaded', renderUcapan);
+
+// Tambahkan fungsi di frontend untuk mereset semua ucapan
+function resetUcapan() {
+  if (confirm('Apakah Anda yakin ingin menghapus semua ucapan?')) {
+    fetch('https://punyaku.onrender.com/ucapan', { // Pastikan menggunakan URL endpoint '/ucapan'
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.message); // Menampilkan pesan dari backend
+        renderUcapan(); // Menampilkan ulang daftar ucapan setelah reset
+      })
+      .catch((err) => console.error('Gagal menghapus semua ucapan:', err));
+  }
+}
+
+// Tambahkan tombol untuk mereset semua ucapan di HTML
+// Contoh: <button id="resetButton" class="btn btn-danger">Reset Semua Ucapan</button>
+
+// Event listener untuk tombol reset
+const resetButton = document.getElementById('resetButton');
+if (resetButton) {
+  resetButton.addEventListener('click', resetUcapan);
+}

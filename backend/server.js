@@ -41,6 +41,15 @@ app.post('/ucapan', (req, res) => {
   });
 });
 
+app.delete('/ucapan', (req, res) => {
+  fs.writeFile(filePath, JSON.stringify([], null, 2), (err) => {
+    if (err) {
+      return res.status(500).json({ message: 'Gagal menghapus semua ucapan' });
+    }
+    res.status(200).json({ message: 'Semua ucapan berhasil dihapus' });
+  });
+});
+
 // Menjalankan server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
