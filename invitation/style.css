@@ -428,7 +428,7 @@ body {
   background-size: cover;
   /* Gambar background memenuhi seluruh elemen */
   width: 100%;
-  min-height: 75vh;
+  min-height: 88vh;
   /* Mencakup tinggi layar penuh */
   display: flex;
   flex-direction: column;
@@ -628,7 +628,7 @@ body {
   background-size: cover;
   /* Gambar latar memenuhi container */
   width: 90%;
-  min-height: 60vh;
+  min-height: 75vh;
   /* Tinggi minimum container */
   display: flex;
   justify-content: center;
