@@ -893,7 +893,7 @@ body {
 
 /* Membuat elemen row bisa di-scroll */
 #daftarUcapan {
-  max-height: 50vh;
+  max-height: 75vh;
   /* Batasi tinggi elemen sesuai kebutuhan */
   overflow-y: auto;
   /* Tambahkan scroll vertikal jika konten melebihi batas tinggi */
