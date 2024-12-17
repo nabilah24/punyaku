@@ -588,11 +588,6 @@ body {
     font-size: 0.9rem;
     padding: 10px 15px;
   }
-
-    .detail {
-      min-height: 100vh;
-      /* Kurangi tinggi elemen pada layar kecil */
-    }
 }
 
 .elemen {
