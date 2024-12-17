@@ -713,27 +713,9 @@
 
     <script>
      $(document).ready(function () {
-        // Inisialisasi WOW.js dengan resetAnimation: true
-        var wow = new WOW({
-          resetAnimation: true,  // Agar animasi bisa diulang
-          offset: 100,  // Pengaturan offset untuk memulai animasi lebih awal
-          mobile: true   // Aktifkan animasi pada perangkat mobile
+        new WOW({
+          resetAnimation: true,
         }).init();
-
-        var lastScrollTop = 0; // Untuk melacak posisi scroll
-
-        // Menambahkan event listener untuk scroll
-        $(window).on('scroll', function () {
-          var currentScroll = $(this).scrollTop();
-
-          // Mengecek apakah scroll ke atas
-          if (currentScroll < lastScrollTop) {
-            // Memicu ulang animasi saat scroll ke atas
-            wow.sync();  // Memungkinkan animasi dipicu kembali
-          }
-
-          lastScrollTop = currentScroll; // Update posisi scroll
-        });
       });
     </script>
 
