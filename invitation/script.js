@@ -27,3 +27,61 @@ function startCountdown(targetDate) {
 const targetDate = new Date("2025-01-04T10:00:00").getTime();
 startCountdown(targetDate);
 
+// 
+function showThankYouAlert() {
+  Swal.fire({
+    title: "Terima Kasih!",
+    html: '<div class="smiley">😉</div>',
+    customClass: {
+      popup: "swal2-popup", // Menambahkan kelas kustom untuk memperbesar kotak alert
+    },
+    showConfirmButton: false, // Menyembunyikan tombol "OK"
+    willOpen: () => {
+      // Animasi dinamis sebelum alert ditampilkan
+      const smiley = document.querySelector(".smiley");
+      smiley.style.transform = "scale(1.2)";
+    },
+    didOpen: () => {
+      // Animasi dinamis saat alert terbuka
+      const smiley = document.querySelector(".smiley");
+      smiley.style.transition = "transform 1s ease";
+      smiley.style.transform = "scale(1)";
+
+      // Menunggu durasi animasi selesai, kemudian menutup alert
+      setTimeout(() => {
+        Swal.close(); // Menutup alert setelah animasi selesai
+      }, 1000); // Durasi animasi 1 detik
+    },
+  });
+}
+
+function copyAccountNumber(button) {
+  // Cari elemen nomor rekening yang ada di kartu yang sesuai
+  const accountNumber =
+    button.previousElementSibling.querySelector(
+      ".account-number"
+    ).innerText;
+
+  // Gunakan Clipboard API untuk menyalin teks
+  navigator.clipboard
+    .writeText(accountNumber)
+    .then(() => {
+      showAlert();
+    })
+    .catch((err) => {
+      console.error("Failed to copy: ", err);
+    });
+}
+
+// Fungsi untuk menampilkan alert
+function showAlert() {
+  const alertBox = document.getElementById("alert-box");
+
+  // Tambahkan kelas "show" untuk memunculkan alert
+  alertBox.classList.add("show");
+
+  // Hilangkan alert setelah 3 detik
+  setTimeout(() => {
+    alertBox.classList.remove("show");
+  }, 3000);
+}
