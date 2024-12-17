@@ -672,10 +672,6 @@ body {
     transform-origin: bottom left;
     /* Titik fokus zoom berada di pojok kiri atas */
   }
-
-  .back-loc {
-    min-height: 60vh;
-  }
 }
 
 .peta {
