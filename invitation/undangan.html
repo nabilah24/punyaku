@@ -30,8 +30,9 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
 
-    <!-- Libraries css -->
-    <link rel="stylesheet" href="./assets/lib/animate/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- custom css -->
     <link rel="stylesheet" href="style.css" />
@@ -585,14 +586,22 @@
     </audio>
 
     <script>
-      window.onload = function() {
+      window.onload = function () {
         const playPauseBtn = document.getElementById("play-pause-btn");
         const backgroundMusic = document.getElementById("background-music");
         const playPauseIcon = playPauseBtn.querySelector("i"); // Pilih ikon di dalam tombol
 
         // Cobalah memutar musik secara otomatis
-        backgroundMusic.play().catch(error => {
-          console.log("Autoplay gagal: " + error);})
+        backgroundMusic.play().then(() => {
+          // Jika autoplay berhasil, set ikon ke pause
+          playPauseIcon.classList.remove("bi-play-fill"); // Ganti ikon menjadi pause
+          playPauseIcon.classList.add("bi-pause-fill");
+        }).catch(error => {
+          console.log("Autoplay gagal: " + error);
+          // Jika autoplay gagal, set ikon ke play
+          playPauseIcon.classList.remove("bi-pause-fill"); // Ganti ikon menjadi play
+          playPauseIcon.classList.add("bi-play-fill");
+        });
 
         playPauseBtn.addEventListener("click", () => {
           if (backgroundMusic.paused) {
@@ -703,10 +712,28 @@
     ></script>
 
     <script>
-      $(document).ready(function () {
-       new WOW({
-          resetAnimation: true, // Aktifkan pengulangan animasi
+     $(document).ready(function () {
+        // Inisialisasi WOW.js dengan resetAnimation: true
+        var wow = new WOW({
+          resetAnimation: true,  // Agar animasi bisa diulang
+          offset: 100,  // Pengaturan offset untuk memulai animasi lebih awal
+          mobile: true   // Aktifkan animasi pada perangkat mobile
         }).init();
+
+        var lastScrollTop = 0; // Untuk melacak posisi scroll
+
+        // Menambahkan event listener untuk scroll
+        $(window).on('scroll', function () {
+          var currentScroll = $(this).scrollTop();
+
+          // Mengecek apakah scroll ke atas
+          if (currentScroll < lastScrollTop) {
+            // Memicu ulang animasi saat scroll ke atas
+            wow.sync();  // Memungkinkan animasi dipicu kembali
+          }
+
+          lastScrollTop = currentScroll; // Update posisi scroll
+        });
       });
     </script>
 
